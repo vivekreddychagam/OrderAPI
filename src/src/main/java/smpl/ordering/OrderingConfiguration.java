@@ -53,13 +53,18 @@ public class OrderingConfiguration
         options.socketKeepAlive(false);
 
         String mongoHost = mongoDBProperties.getHost();
-        String mongoPort = System.getenv("MONGO_PORT"); // Anticipating use within a docker container.
 
-        if (!Utility.isNullOrEmpty(mongoPort))
+        if (!Utility.isNullOrEmpty(System.getenv("MONGO_HOST")))
         {
-            URL portUrl = new URL(mongoPort.replace("tcp:", "http:"));
-            mongoHost = portUrl.getHost();
+            mongoHost = System.getenv("MONGO_HOST"); // Using for Docker Container format
         }
+        //if (!Utility.isNullOrEmpty(mongoPort))
+        //{
+        //    URL portUrl = new URL(mongoPort.replace("tcp:", "http:"));
+        //    mongoHost = portUrl.getHost();
+        //}
+        System.out.println("------ DEBUG mongoHost : " + mongoHost);
+        System.out.println("------ DEBUG Hostname : " + InetAddress.getLocalHost());
 
         String mongoDB = mongoDBProperties.getDatabase();
 
