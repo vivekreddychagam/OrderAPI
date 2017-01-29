@@ -6,7 +6,7 @@ RUN mkdir -p /usr/local/app
 
 WORKDIR /usr/local/app
 
-COPY /opt/vsts/work/1/a/drop/ordering-service-0.1.0 /usr/local/app/
+COPY drop/ordering-service-0.1.0 /usr/local/app/
 
 EXPOSE 8080
 
