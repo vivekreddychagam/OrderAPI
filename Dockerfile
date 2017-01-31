@@ -2,7 +2,7 @@ FROM openjdk:8-jdk
 
 MAINTAINER juliens@microsoft.com
 
-ENV PUMRP_MONGO_NAME
+#ENV PUMRP_MONGO_NAME
 
 WORKDIR /app
 
