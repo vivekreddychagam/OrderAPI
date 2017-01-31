@@ -8,7 +8,7 @@ WORKDIR /app
 
 COPY ./src .
 
-RUN /app/gradlew build
+RUN /app/gradlew build -x test
 
 EXPOSE 8080
 
