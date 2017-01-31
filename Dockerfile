@@ -1,12 +1,14 @@
-FROM openjdk:8-jre
+FROM openjdk:8-jdk
 
 MAINTAINER juliens@microsoft.com
 
-RUN mkdir -p /usr/local/app
+ENV PUMRP_MONGO_NAME
 
-WORKDIR /usr/local/app
+WORKDIR /app
 
-COPY  ./src/build/libs/ordering-service-0.1.0 /usr/local/app/
+COPY ./src .
+
+RUN /app/gradlew build
 
 EXPOSE 8080
 
