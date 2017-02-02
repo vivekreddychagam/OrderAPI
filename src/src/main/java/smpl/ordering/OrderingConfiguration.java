@@ -51,6 +51,7 @@ public class OrderingConfiguration
     MongoTemplate mongoTemplate() throws Exception
     {
         MongoClient client;
+        MongoClient mongoClientURI;
         MongoClientOptions.Builder options = MongoClientOptions.builder();
         options.socketKeepAlive(false);
 
@@ -59,7 +60,7 @@ public class OrderingConfiguration
         if (!Utility.isNullOrEmpty(System.getenv("MONGO_HOST")))
         {
             mongoHost = System.getenv("MONGO_HOST"); // Using for Docker Container format
-            MongoClient mongoClientURI = new MongoClient(new MongoClientURI(mongoHost));
+            mongoClientURI = new MongoClient(new MongoClientURI(mongoHost));
         }
         //if (!Utility.isNullOrEmpty(mongoPort))
         //{
