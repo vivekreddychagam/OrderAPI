@@ -6,9 +6,9 @@ MAINTAINER juliens@microsoft.com
 
 WORKDIR /app
 
-COPY ./src .
+COPY src .
 
-RUN /app/gradlew build -x test
+RUN /app/gradlew build
 
 EXPOSE 8080
 
