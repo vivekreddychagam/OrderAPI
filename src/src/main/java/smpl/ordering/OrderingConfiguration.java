@@ -60,7 +60,7 @@ public class OrderingConfiguration
         if (!Utility.isNullOrEmpty(System.getenv("MONGO_HOST")))
         {
             mongoHost = System.getenv("MONGO_HOST"); // Using for Docker Container format
-            mongoClientURI = new MongoClient(new MongoClientURI(mongoHost));
+            //mongoClientURI = new MongoClient(new MongoClientURI(mongoHost));
         }
         //if (!Utility.isNullOrEmpty(mongoPort))
         //{
@@ -74,19 +74,19 @@ public class OrderingConfiguration
 
         if (mongoDB != null && !mongoDB.isEmpty() && mongoHost != null && !mongoHost.isEmpty())
         {
-            if (mongoClientURI != null)
-            {
-                client = mongoClientURI;
-            }
-            else
-            {
+            //if (mongoClientURI != null)
+            //{
+            //    client = mongoClientURI;
+            //}
+            //else
+            //{
                     List<ServerAddress> hosts = new ArrayList<>();
                     for (String host : mongoHost.split(","))
                     {
                         hosts.add(new ServerAddress(host));
                     }
                     client = new MongoClient(hosts, options.build());
-             }
+             //}
 
         }
         else
