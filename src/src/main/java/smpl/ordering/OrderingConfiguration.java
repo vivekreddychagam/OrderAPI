@@ -51,7 +51,7 @@ public class OrderingConfiguration
     MongoTemplate mongoTemplate() throws Exception
     {
         MongoClient client;
-        MongoClient mongoClientURI;
+        MongoClient mongoClientURI = null;
         MongoClientOptions.Builder options = MongoClientOptions.builder();
         options.socketKeepAlive(false);
 
