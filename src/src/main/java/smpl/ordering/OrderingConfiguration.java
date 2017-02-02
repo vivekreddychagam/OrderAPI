@@ -5,7 +5,7 @@ import com.microsoft.applicationinsights.TelemetryConfiguration;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientOptions;
 import com.mongodb.ServerAddress;
-import com.mongodb.MongoClientURI;
+//import com.mongodb.MongoClientURI;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
