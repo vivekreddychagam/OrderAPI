@@ -10,6 +10,7 @@ node {
    withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub',
                     usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']])
    {
+      sh 'docker login --username=$USERNAME --password=$PASSWORD' 
       sh 'docker push partsunlimitedmrp/orderapi:${BUILD_ID}'
    }
    stage('Prepare Breeds') 
