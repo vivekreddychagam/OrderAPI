@@ -1,0 +1,38 @@
+node {
+   stage('Preparation') { // for display purposes
+      // Get some code from a GitHub repository
+      git 'https://github.com/partsunlimitedmrp/orderAPI.git'
+   }
+   stage('Build') {
+      sh '''#!/bin/bash -l
+      OP=`expr ${BUILD_ID} % 2`
+      echo $OP
+      if [ $OP = 0 ]
+      then
+       docker build -t partsunlimitedmrp/orderapi:a .
+      else
+       docker build -t partsunlimitedmrp/orderapi:b .
+      fi
+      '''
+   }
+   stage('Push') 
+   withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub',
+                    usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']])
+   {
+      sh '''#!/bin/bash -l
+      docker login --username=$USERNAME --password=$PASSWORD
+      OP=`expr ${BUILD_ID} % 2`
+      echo $OP
+      if [ $OP = 0 ]
+      then
+       docker push partsunlimitedmrp/orderapi:a .
+      else
+       docker push partsunlimitedmrp/orderapi:b .
+      fi
+      '''
+   }
+   stage('Deploy 50') 
+   {
+       sh 'curl -v -X PUT --data-binary @deploy/pumrpclient50.yaml -H "Content-Type: application/x-yaml" vamp.vamp.marathon.mesos:12061/api/v1/deployments/pumrpclient'
+   }
+}
