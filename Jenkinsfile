@@ -13,4 +13,10 @@ node {
       sh 'docker login --username=$USERNAME --password=$PASSWORD'
       sh 'docker push partsunlimitedmrp/orderapi:${BUILD_ID}'
    }
+   stage('Update Breed') {
+       sh 'curl -v -X PUT --data-binary @pumrpclientA.yaml -H "Content-Type: application/x-yaml" vamp.vamp.marathon.mesos:12061/api/v1/deployments/pumrpclient'
+   }
+   stage('Deploy') {
+       sh 'curl -v -X POST --data-binary @webdebug_1.1.yaml -H "Content-Type: application/x-yaml" vamp.vamp.marathon.mesos:12061/api/v1/deployments'
+   }
 }
