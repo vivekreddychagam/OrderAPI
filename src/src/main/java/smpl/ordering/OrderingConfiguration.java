@@ -61,12 +61,7 @@ public class OrderingConfiguration
         {
             mongoHost = System.getenv("MONGO_HOST"); // Using for Docker Container format
         }
-        if (!Utility.isNullOrEmpty(mongoPort))
-        {
-            URL portUrl = new URL(mongoPort.replace("tcp:", "http:"));
-            mongoHost = portUrl.getHost();
-        }
-        System.out.println("------ DEBUG mongoHost : " + mongoHost);
+        System.out.println("------ DEBUG MONGO_HOST : " + mongoHost);
         System.out.println("------ DEBUG Hostname : " + InetAddress.getLocalHost());
 
         String mongoDB = mongoDBProperties.getDatabase();
@@ -84,7 +79,8 @@ public class OrderingConfiguration
         {
             client = new MongoClient();
         }
-
+        System.out.println("------ DEBUG client : " + client);
+        System.out.println("------ DEBUG mongoDB : " + mongoDB);
         return new MongoTemplate(client, mongoDB);
     }
 

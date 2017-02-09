@@ -8,7 +8,8 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = "mongodb")
 public class MongoDBProperties
 {
-    private String host = "localhost";
+    //private String host = "localhost";
+    private String host = System.getenv("MONGO_HOST");
     private String database = "ordering";
 
     public String getHost()
