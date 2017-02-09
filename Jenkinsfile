@@ -15,9 +15,6 @@ node {
    }
    stage('Prepare Breeds') 
    {
-      
-   }
-   {
       sh '''#!/bin/bash -l
       sed \'s/IDTAGA/\'${BUILD_ID}\'/g\' pumrpclient50.yaml > pumrpclient50.yaml
       sed \'s/IDTAGB/\'$((${BUILD_ID}-1))\'/g\' pumrpclient50.yaml > pumrpclient50.yaml
