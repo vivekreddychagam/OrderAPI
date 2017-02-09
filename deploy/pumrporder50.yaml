@@ -8,14 +8,14 @@ clusters:
       ]
       routes:
         web:a:
-          weight: 100%  # weight in percentage
+          weight: 50%  # weight in percentage
         web:b:
-          weight: 0%
+          weight: 50%
     services: # services is now a list of breeds
       -
         breed:
           name: web:a
-          deployable: partsunlimitedmrp/clients:a
+          deployable: partsunlimitedmrp/orderapi:IDTAGA
           ports:
             webport: 8080/http
         scale:
@@ -25,7 +25,7 @@ clusters:
       -
         breed:
           name: web:b # a new version of our service
-          deployable: partsunlimitedmrp/clients:b
+          deployable: partsunlimitedmrp/orderapi:IDTAGB
           ports:
             webport: 8080/http
         scale:
