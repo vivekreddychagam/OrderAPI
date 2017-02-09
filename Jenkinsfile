@@ -16,7 +16,7 @@ node {
    stage('Prepare Breeds') 
    {
       sh 'sed \'s/IDTAGA/\'${BUILD_ID}\'/g\' deploy/pumrpclient50.yaml > pumrpclientdeploy50.yaml'
-      sh 'sed \'s/IDTAGB/\'$((${BUILD_ID}-1))\'/g\' deploy/pumrpclient50.yaml > pumrpclientdeploy50.yaml'
+      sh 'sed \'s/IDTAGB/\'$((${BUILD_ID}-1))\'/g\' pumrpclientdeploy50.yaml > pumrpclientdeploy50.yaml'
    }
    stage('Deploy 50') 
    {
