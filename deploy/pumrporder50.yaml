@@ -1,5 +1,5 @@
 ---
-name: pumrp
+name: pumrporder
 clusters:
   serviceju:
     gateways:
