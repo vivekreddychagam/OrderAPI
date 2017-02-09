@@ -18,6 +18,8 @@ clusters:
           deployable: partsunlimitedmrp/orderapi:IDTAGA
           ports:
             webport: 8080/http
+          environment_variables:
+            MONGO_HOST: "database.pumrpdb.marathon.mesos"
         scale:
           cpu: 0.5
           memory: 1024MB
@@ -28,6 +30,8 @@ clusters:
           deployable: partsunlimitedmrp/orderapi:IDTAGB
           ports:
             webport: 8080/http
+          environment_variables:
+            MONGO_HOST: "database.pumrpdb.marathon.mesos"
         scale:
           cpu: 0.5
           memory: 1024MB
