@@ -15,10 +15,14 @@ node {
    }
    stage('Prepare Breeds') 
    {
-      sh 'sed \'s/IDTAGA/\'${BUILD_ID}\'/g\' pumrpclient50.yaml > pumrpclient50.yaml'
-      sh 'sed \'s/IDTAGB/\'$((${BUILD_ID}-1))\'/g\' pumrpclient50.yaml > pumrpclient50.yaml'
-      OUTPUT_CAT = sh 'cat pumrpclient50.yaml'
-      echo "${OUTPUT_CAT}"
+      
+   }
+   {
+      sh '''#!/bin/bash -l
+      sed \'s/IDTAGA/\'${BUILD_ID}\'/g\' pumrpclient50.yaml > pumrpclient50.yaml
+      sed \'s/IDTAGB/\'$((${BUILD_ID}-1))\'/g\' pumrpclient50.yaml > pumrpclient50.yaml
+      cat pumrpclient50.yaml
+      '''
    }
    stage('Deploy 50') 
    {
