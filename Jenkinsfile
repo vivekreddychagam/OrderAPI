@@ -23,6 +23,6 @@ node {
    }   
    stage('Deploy 50') 
    {
-       sh 'curl -v -X POST --data-binary @pdeploy/pumrpclient50.yaml -H "Content-Type: application/x-yaml" vamp.vamp.marathon.mesos:12061/api/v1/deployments'
+       sh 'curl -v -X POST --data-binary @deploy/pumrpclient50.yaml -H "Content-Type: application/x-yaml" vamp.vamp.marathon.mesos:12061/api/v1/deployments'
    }
 }
