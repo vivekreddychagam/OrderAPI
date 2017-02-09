@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import smpl.ordering.BadRequestException;
+import smpl.ordering.MongoDBProperties;
 import smpl.ordering.OrderingInitializer;
 import smpl.ordering.Utility;
 import smpl.ordering.models.CatalogItem;
@@ -43,6 +44,7 @@ public class ShipmentController
     {
         try
         {
+            System.out.println("ShipmentController Hitted");
             List<ShipmentRecord> shipments = getShipmentRepository().getShipments(status);
             if (shipments == null || shipments.size() == 0)
             {
