@@ -15,14 +15,11 @@ node {
    }
    stage('Prepare Breeds') 
    {
-      sh '''#!/bin/bash -l
-      sed \'s/IDTAGA/\'${BUILD_ID}\'/g\' pumrpclient50.yaml > pumrpclient50.yaml
-      sed \'s/IDTAGB/\'$((${BUILD_ID}-1))\'/g\' pumrpclient50.yaml > pumrpclient50.yaml
-      cat pumrpclient50.yaml
-      '''
+      sh 'sed \'s/IDTAGA/\'${BUILD_ID}\'/g\' pumrpclient50.yaml > pumrpclient50.yaml'
+      sh 'sed \'s/IDTAGB/\'$((${BUILD_ID}-1))\'/g\' pumrpclient50.yaml > pumrpclient50.yaml'
    }
    stage('Deploy 50') 
    {
-       sh 'curl -v -X POST --data-binary @pumrpclient50.yaml -H "Content-Type: application/x-yaml" vamp.vamp.marathon.mesos:10102/api/v1/deployments'
+       sh 'curl -v -X POST --data-binary @pumrpclient50.yaml -H "Content-Type: application/x-yaml" vamp.vamp.marathon.mesos:12061/api/v1/deployments'
    }
 }
