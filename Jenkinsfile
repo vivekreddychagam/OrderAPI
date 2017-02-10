@@ -24,7 +24,7 @@ node {
    } 
    stage('Deploy in Cluster') 
    {
-       sh 'curl -v -X POST --data-binary @deploy/pumrpclientdeploy.yaml -H "Content-Type: application/x-yaml" vamp.vamp.marathon.mesos:12061/api/v1/deployments'
+       sh 'curl -v -X POST --data-binary @deploy/pumrporderdeploy.yaml -H "Content-Type: application/x-yaml" vamp.vamp.marathon.mesos:12061/api/v1/deployments'
    }
    stage('Move GW 50/50') 
    {
