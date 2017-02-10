@@ -1,4 +1,4 @@
-package smpl.ordering.controllers;
+/*package smpl.ordering.controllers;
 
 import com.microsoft.applicationinsights.TelemetryClient;
 import org.springframework.http.HttpHeaders;
@@ -21,11 +21,7 @@ import java.util.List;
 @RequestMapping("/catalog")
 public class CatalogController
 {
-    /**
-     * Gets a list of available catalog item.
-     *
-     * @return An HttpResponse containing a list of catalog item.
-     */
+
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity getCatalogItems()
     {
@@ -52,12 +48,7 @@ public class CatalogController
     }
 
 
-    /**
-     * Gets a specific catalog item by its id.
-     *
-     * @param sku The SKU number
-     * @return An HttpResponse containing an catalog item record.
-     */
+
     @RequestMapping(method = RequestMethod.GET, value = "/{sku}")
     public ResponseEntity getCatalogItem(@PathVariable String sku)
     {
@@ -82,12 +73,7 @@ public class CatalogController
         }
     }
 
-    /**
-     * Adds or updates an catalog item SKU
-     *
-     * @param info Information about the SKU
-     * @return An HTTP status code.
-     */
+
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity addCatalogItem(@RequestBody CatalogItem info)
     {
@@ -120,13 +106,7 @@ public class CatalogController
         }
     }
 
-    /**
-     * Adds or updates an CatalogItem SKU
-     *
-     * @param sku  The SKU number
-     * @param info Information about the SKU
-     * @return An HTTP status code.
-     */
+
     @RequestMapping(method = RequestMethod.PUT, value = "/{sku}")
     public ResponseEntity upsertCatalogItem(@PathVariable String sku, @RequestBody CatalogItem info)
     {
@@ -155,12 +135,7 @@ public class CatalogController
         }
     }
 
-    /**
-     * Remove an catalog item SKU from the catalog.
-     *
-     * @param sku The SKU number.
-     * @return An HTTP status code.
-     */
+
     @RequestMapping(method = RequestMethod.DELETE, value = "/{sku}")
     public ResponseEntity removeCatalogItem(@PathVariable String sku)
     {
@@ -190,3 +165,4 @@ public class CatalogController
         return RepositoryFactory.getCatalogItemsRepository();
     }
 }
+*/
