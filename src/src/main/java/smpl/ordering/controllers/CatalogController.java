@@ -25,7 +25,7 @@ public class CatalogController
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity getCatalogItems()
     {
-        TelemetryClient tc = new TelemetryClient();
+        TelemetryClient tc = Utility.getTelemetryClient();
         tc.trackEvent("Get Catalog hit");
         try
         {
