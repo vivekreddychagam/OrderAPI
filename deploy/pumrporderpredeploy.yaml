@@ -9,7 +9,7 @@ clusters:
         ports:
           webport: 8080/http
         environment_variables:
-            MONGO_HOST: "database.pumrpdb.marathon.mesos"
+            MONGO_HOST: "pumrpdatabase.pumrpdatabase.marathon.mesos"
       scale:
         cpu: 1       
         memory: 1024MB
