@@ -4,7 +4,7 @@
       Learn more about Application Insights configuration with ApplicationInsights.config here:
       http://go.microsoft.com/fwlink/?LinkID=513840
     -->
-    <InstrumentationKey></InstrumentationKey>
+    <InstrumentationKey>2dff0c72-7beb-4d06-b6cf-8d6829980b5e</InstrumentationKey>
     <TelemetryModules>
         <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebRequestTrackingTelemetryModule"/>
         <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebSessionTrackingTelemetryModule"/>
