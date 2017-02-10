@@ -1,0 +1,14 @@
+---
+name: pumrporder:IDPRETAG
+clusters:
+  pumrporderIDPRETAG:
+    services:
+      breed:
+        name: pumrporder:IDPRETAG
+        deployable: partsunlimitedmrp/orderapi:IDPRETAG
+        ports:
+          webport: 8080/http
+      scale:
+        cpu: 0.5       
+        memory: 512MB
+        instances: 1

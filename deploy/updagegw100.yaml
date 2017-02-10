@@ -1,0 +1,14 @@
+---
+name: pumrpapi
+kind: gateway
+internal: false
+deployed: true
+port: 40200/http
+sticky: null
+virtual_hosts:
+- api.pumrp.julien.work
+routes:
+  pumrporder:IDPRETAG/pumrporderIDPRETAG/pumrporder:IDPRETAG/webport:
+    weight: 0%
+  pumrporder:IDTAG/pumrporderIDTAG/pumrporder:IDTAG/webport:
+    weight: 100%

@@ -13,13 +13,33 @@ node {
       sh 'docker login --username=$USERNAME --password=$PASSWORD' 
       sh 'docker push partsunlimitedmrp/orderapi:${BUILD_ID}'
    }
-   stage('Prepare Breeds') 
+   stage('Prepare Scripts') 
    {
-      sh 'sed -i \'s/IDTAGA/\'${BUILD_ID}\'/g\' deploy/pumrporder50.yaml'
-      sh 'sed -i \'s/IDTAGB/\'$((${BUILD_ID}-1))\'/g\' deploy/pumrporder50.yaml'
+      sh 'sed -i \'s/IDTAG/\'${BUILD_ID}\'/g\' deploy/pumrporderdeploy.yaml'
+      sh 'sed -i \'s/IDPRETAG/\'$((${BUILD_ID}-1))\'/g\' deploy/pumrporderpredeploy.yaml'
+      sh 'sed -i \'s/IDTAG/\'${BUILD_ID}\'/g\' deploy/updategw50.yaml'
+      sh 'sed -i \'s/IDPRETAG/\'$((${BUILD_ID}-1))\'/g\' deploy/updategw50.yaml'
+      sh 'sed -i \'s/IDTAG/\'${BUILD_ID}\'/g\' deploy/updategw100.yaml'
+      sh 'sed -i \'s/IDPRETAG/\'$((${BUILD_ID}-1))\'/g\' deploy/updategw100.yaml'
    } 
-   stage('Deploy 50') 
+   stage('Deploy in Cluster') 
    {
-       sh 'curl -v -X POST --data-binary @deploy/pumrporder50.yaml -H "Content-Type: application/x-yaml" vamp.vamp.marathon.mesos:12061/api/v1/deployments'
+       sh 'curl -v -X POST --data-binary @deploy/pumrpclientdeploy.yaml -H "Content-Type: application/x-yaml" vamp.vamp.marathon.mesos:12061/api/v1/deployments'
+   }
+   stage('Move GW 50/50') 
+   {
+       input 'Do you approve deployment?'
+       sh 'curl -v -X PUT --data-binary @deploy/updategw50.yaml -H "Content-Type: application/x-yaml" vamp.vamp.marathon.mesos:12061/api/v1/gateways/pumrpapi'
+   }
+   stage('Move Full') 
+   {
+       input 'Do you approve deployment?'
+       sh 'curl -v -X PUT --data-binary @deploy/updategw100.yaml -H "Content-Type: application/x-yaml" vamp.vamp.marathon.mesos:12061/api/v1/gateways/pumrpapi'
+   }
+   stage('Undeploy Previous App') 
+   {
+       sh 'curl -v -X DELETE --data-binary @deploy/pumrporderpredeploy.yaml -H "Content-Type: application/x-yaml" vamp.vamp.marathon.mesos:12061/api/v1/deployments/pumrporder:$((${BUILD_ID}-1))'
+       sh 'curl -v -X DELETE -H "Content-Type: application/x-yaml" vamp.vamp.marathon.mesos:12061/api/v1/breeds/pumrporder:$((${BUILD_ID}-1))'
+
    }
 }
