@@ -9,6 +9,6 @@ clusters:
         ports:
           webport: 8080/http
       scale:
-        cpu: 0.5       
-        memory: 512MB
+        cpu: 1       
+        memory: 1024MB
         instances: 1
