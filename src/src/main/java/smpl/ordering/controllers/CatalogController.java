@@ -1,4 +1,4 @@
-/*package smpl.ordering.controllers;
+package smpl.ordering.controllers;
 
 import com.microsoft.applicationinsights.TelemetryClient;
 import org.springframework.http.HttpHeaders;
@@ -167,4 +167,3 @@ public class CatalogController
         return RepositoryFactory.getCatalogItemsRepository();
     }
 }
-*/
