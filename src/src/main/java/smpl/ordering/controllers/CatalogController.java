@@ -1,3 +1,4 @@
+/*
 package smpl.ordering.controllers;
 
 import com.microsoft.applicationinsights.TelemetryClient;
@@ -167,3 +168,4 @@ public class CatalogController
         return RepositoryFactory.getCatalogItemsRepository();
     }
 }
+*/
