@@ -4,7 +4,7 @@ node {
       git 'https://github.com/partsunlimitedmrp/orderAPI.git'
    }
    stage('Build') {
-      sh 'docker build -t partsunlimitedmrp/orderapi:${BUILD_ID} .'
+      sh 'docker build -t vivekreddychagam/orderapi:${BUILD_ID} .'
    }
    stage('Push') 
    withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub',
